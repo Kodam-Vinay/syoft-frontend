@@ -3,13 +3,14 @@ import logo from "../assets/logo.png";
 import CustomButton from "../utils/CustomButton";
 const Home = () => {
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-  const name =
-    userDetails?.user_data[0]?.user_firstname &&
-    userDetails?.user_data[0]?.user_lastname
+  const name = userDetails?.user_data
+    ? userDetails?.user_data[0]?.user_firstname &&
+      userDetails?.user_data[0]?.user_lastname
       ? userDetails?.user_data[0]?.user_firstname +
         " " +
         userDetails?.user_data[0]?.user_lastname
-      : "User";
+      : "User"
+    : "User";
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -23,7 +24,7 @@ const Home = () => {
         <CustomButton
           label={"Logout"}
           onClick={handleLogout}
-          className="w-20"
+          className="w-16 px-6"
         />
       </nav>
       <div className="p-6 max-w-xl mx-auto mt-5 bg-white rounded-xl flex items-center space-x-4">
